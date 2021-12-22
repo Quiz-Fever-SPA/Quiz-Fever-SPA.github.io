@@ -1,8 +1,7 @@
 {
   "name": "quiz-system-fever",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +10,16 @@
   "dependencies": {
     "lit-html": "^2.0.2",
     "page": "^1.11.6"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quiz-Fever-SPA/Quiz-Fever-SPA.github.io.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Quiz-Fever-SPA/Quiz-Fever-SPA.github.io/issues"
+  },
+  "homepage": "https://github.com/Quiz-Fever-SPA/Quiz-Fever-SPA.github.io#readme",
+  "description": ""
 }
