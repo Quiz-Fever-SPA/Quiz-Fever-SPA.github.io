@@ -10,7 +10,6 @@
     display: none;
 }
 
-
 #guest-nav, #user-nav {
-    display: none;
+    display: block;
 }

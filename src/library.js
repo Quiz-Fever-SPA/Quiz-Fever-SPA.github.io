@@ -1,12 +1,8 @@
-import { html, render } from './lib/lit-html.js';
-import { until } from './lib/directives/until.js';
-import page from './lib/page.mjs';
-import { classMap } from './lib/directives/class-map.js';
+import { html, render } from '//unpkg.com/lit-html?module';
+import page from '//unpkg.com/page/page.mjs';
 
 export {
     html,
     render,
-    until,
     page,
-    classMap
 };
