@@ -3,7 +3,7 @@ import { addOwner, } from './data.js';
 
 
 export async function getQuizes() {
-    return api.get('/classes/Quiz');
+    return (await api.get('/classes/Quiz')).results;
 }
 
 export async function getQuizById(id) {

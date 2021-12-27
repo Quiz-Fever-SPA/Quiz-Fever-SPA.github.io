@@ -7,8 +7,11 @@ export async function createQuestion(quizId, question) {
     return api.post('/classes/Question', body);
 }
 
-export async function getQuistionByQuizId(quizId) {
-    const query = JSON.stringify({ quiz: createPointer('Quiz', quizId)});
+export async function getQuistionByQuizId(quizId, ownerId) {
+    const query = JSON.stringify({ 
+        quiz: createPointer('Quiz', quizId),
+        owner: createPointer('_User', ownerId)
+    });
     const response = await api.get('/classes/Question?where=' + encodeURIComponent(query));
     return response.results;
 }
