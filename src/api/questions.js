@@ -4,7 +4,7 @@ import * as api from './api.js';
 export async function createQuestion(quizId, question) {
     const body = addOwner(question);
     body.quiz = createPointer('Quiz', quizId);
-    return api.post('/classes/Question', body);
+    return await api.post('/classes/Question', body);
 }
 
 export async function getQuistionByQuizId(quizId, ownerId) {

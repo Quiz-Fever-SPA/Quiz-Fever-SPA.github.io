@@ -66,6 +66,7 @@ export async function editorPage(ctx) {
     let quiz = null;
     let questions = [];
     const userId = getUserData().id;
+  
     if (quizId) {
         [quiz, questions] = await Promise.all([
             getQuizById(quizId),
