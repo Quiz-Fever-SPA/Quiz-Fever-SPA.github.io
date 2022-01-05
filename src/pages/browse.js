@@ -1,6 +1,7 @@
 import { getQuizes } from '../api/quiz.js';
 import { html, until, topics } from '../library.js';
 import { cube } from './common/loader.js';
+import { quizTemplate } from './common/quiz-preview.js';
 
 const browseTemplate = () => html`
 <section id="browse">
@@ -33,22 +34,6 @@ async function loadQuizes() {
     </div>`;
 }
 
-
-const quizTemplate = (quiz) => html`
-<article class="preview layout">
-    <div class="right-col">
-        <a class="action cta" href=${`/details/${quiz.objectId}`}>View Quiz</a>
-    </div>
-    <div class="left-col">
-        <h3><a class="quiz-title-link" href=${`/details/${quiz.objectId}`}>${quiz.title}</a></h3>
-        <span class="quiz-topic">Topic: ${quiz.topic}</span>
-        <div class="quiz-meta">
-            <span>${quiz.questionCount} question${quiz.questionCount == 1 ? '' : 's'}</span>
-            <span>|</span>
-            <span>Taken ? times</span>
-        </div>
-    </div>
-</article>`;
  
 export async function browsePage(ctx) {
     ctx.render(browseTemplate());

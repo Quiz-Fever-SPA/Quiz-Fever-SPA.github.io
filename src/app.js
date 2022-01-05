@@ -11,6 +11,7 @@ import { quizPage } from './pages/quiz/quiz.js';
 import { getUserData } from './util.js';
 import { cube } from './pages/common/loader.js';
 import { resultPage } from './pages/quiz/result.js';
+import { homePage } from './pages/home.js';
 
 // import * as api from './api/solutions.js';
 // window.api = api;
@@ -25,6 +26,7 @@ page(navContext);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/logout', logoutPage);
+page('/', homePage);
 page('/browse', browsePage);
 page('/quiz/:id', getQuiz, quizPage);
 page('/results/:id', getQuiz, resultPage);
