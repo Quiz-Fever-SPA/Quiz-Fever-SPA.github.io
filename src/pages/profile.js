@@ -66,5 +66,4 @@ const quizTemplate = (quiz) => html`
 export async function profilePage(ctx) {
     const user = await findUser();
     ctx.render(profileTemplate(user));
-    console.log(user);
 }

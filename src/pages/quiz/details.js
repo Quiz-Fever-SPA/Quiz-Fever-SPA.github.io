@@ -1,19 +1,23 @@
 import { getSolutionCount } from '../../api/solutions.js';
 import { html, until, topics } from '../../library.js';
+import { getUserData } from '../../util.js';
 import { line } from '../common/loader.js';
 
-const detailsTemplate = (quiz) => html`
+const detailsTemplate = (quiz, user) => html`
 <section id="details">
     <div class="pad-large alt-page">
         <article class="details">
             <h1>${quiz.title}</h1>
-            <span class="quiz-topic">A quiz by <a href="/profile/${quiz.owner.objectId}">${quiz.owner.username}</a> on the topic of <strong>${topics[quiz.topic]}</strong></span>
+            <span class="quiz-topic">A quiz by <strong>${quiz.owner.username}</strong></a> on the topic of <strong>${topics[quiz.topic]}</strong></span>
             ${until(loadCount(quiz), line())}
             <p class="quiz-desc">${quiz.description}</p>
 
-            <div>
-                <a class="cta action" href="/quiz/${quiz.objectId}">Begin Quiz</a>
-            </div>
+            ${user 
+                ? html`<div>
+                            <a class="cta action" href="/quiz/${quiz.objectId}">Begin Quiz</a>
+                        </div>` 
+                : ''}
+                        
         </article>
     </div>
 </section>`;
@@ -32,5 +36,6 @@ async function loadCount(quiz) {
 
 
 export async function detailsPage(ctx) {
-    ctx.render(detailsTemplate(ctx.quiz));
+    const user = getUserData();
+    ctx.render(detailsTemplate(ctx.quiz, user));
 }
