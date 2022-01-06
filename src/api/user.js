@@ -1,4 +1,4 @@
-import { clearUserData, setUserData } from '../util.js';
+import { clearUserData, getUserData, setUserData } from '../util.js';
 import * as api from './api.js';
 
 
@@ -31,4 +31,9 @@ export async function register(username, email, password) {
 export async function logout() {
     api.post('/logout');
     clearUserData();
+}
+
+export async function findUser() {
+    const user = getUserData();
+    return await api.get('/users/' + user.id);
 }

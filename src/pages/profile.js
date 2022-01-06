@@ -1,3 +1,4 @@
+import { findUser } from '../api/user.js';
 import { html, until } from '../library.js';
 import { cube } from './common/loader.js';
 
@@ -63,5 +64,7 @@ const quizTemplate = (quiz) => html`
 </article>`;
 
 export async function profilePage(ctx) {
-    ctx.render(profileTemplate(ctx.user));
+    const user = await findUser();
+    ctx.render(profileTemplate(user));
+    console.log(user);
 }
