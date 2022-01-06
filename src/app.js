@@ -39,7 +39,7 @@ page('/edit/:id', editorPage);
 
 page.start();
 
-function decorateContext(ctx, next) {
+export function decorateContext(ctx, next) {
     ctx.render = (content) => render(content, root);
     ctx.user = getUserData();
     next();

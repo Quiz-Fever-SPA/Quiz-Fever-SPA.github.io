@@ -12,7 +12,7 @@ const detailsTemplate = (quiz, user) => html`
             ${until(loadCount(quiz), line())}
             <p class="quiz-desc">${quiz.description}</p>
 
-            ${user 
+            ${user && quiz.questionCount != 0
                 ? html`<div>
                             <a class="cta action" href="/quiz/${quiz.objectId}">Begin Quiz</a>
                         </div>` 
