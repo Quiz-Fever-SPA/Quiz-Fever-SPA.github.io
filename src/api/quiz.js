@@ -15,7 +15,7 @@ export async function getQuizById(id) {
 }
 
 export async function getStats() {
-    return (await api.get('/classes/Quiz?count=1&limit=0')).count;
+    return (await api.get('/classes/Quiz?count=1&limit=1')).count;
 }
 
 export async function getMostRecentQuiz() {

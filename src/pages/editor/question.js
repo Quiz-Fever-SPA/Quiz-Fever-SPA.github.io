@@ -94,7 +94,7 @@ export function createQuestion(quizId, question, removeQuestion, updateCount, ed
                 await updateQuestion(question.objectId, body);
             } else {
                 const result = await apiCreate(quizId, body);
-                updateCount(1);
+                updateCount();
                 question.objectId = result.objectId;          
             }
 

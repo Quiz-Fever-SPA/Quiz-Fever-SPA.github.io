@@ -19,6 +19,7 @@ export async function register(username, email, password) {
 
     const user = {
         username,
+        email,
         id: result.objectId,
         token: result.sessionToken
     };
