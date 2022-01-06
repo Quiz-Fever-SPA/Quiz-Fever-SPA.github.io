@@ -54,7 +54,7 @@ export function createAnswerList(data, questionIndex) {
         while (target && target != element && target.tagName != 'BUTTON') {
             target = target.parentNode;
         }
-        const index = e.target.dataset.index;
+        const index = target.dataset.index;
         if (index != undefined) {
             e.preventDefault();
             answer.splice(index, 1);

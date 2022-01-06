@@ -1,3 +1,4 @@
+import { getQuizByOwner } from '../api/quiz.js';
 import { findUser } from '../api/user.js';
 import { html, until } from '../library.js';
 import { cube } from './common/loader.js';
@@ -38,11 +39,11 @@ const profileTemplate = (user, quiz) => html`
     </header>
 
     <div class="pad-large alt-page">
+        ${quiz.length == 0 
+            ? html`<p>No created Quizes yet!</p>`
+            : quiz.map(q => quizTemplate(q))}
     </div>
 </section>`;
-
-// <!-- ${until(quizTemplate(quiz), cube())} -->
-
 
 
 const quizTemplate = (quiz) => html`
@@ -53,17 +54,20 @@ const quizTemplate = (quiz) => html`
         <a class="action cta" href="#"><i class="fas fa-trash-alt"></i></a>
     </div>
     <div class="left-col">
-        <h3><a class="quiz-title-link" href="#">RISC Architecture</a></h3>
-        <span class="quiz-topic">Topic: Hardware</span>
+        <h3><a class="quiz-title-link" href="/details/${quiz.objectId}">${quiz.title}</a></h3>
+        <span class="quiz-topic">Topic: ${quiz.topic}</span>
         <div class="quiz-meta">
-            <span>10 questions</span>
+            <span>${quiz.questionCount} question${quiz.questionCount == 1 ? '' : 's'}</span>
             <span>|</span>
-            <span>Taken 107 times</span>
+            <span>Taken ${quiz.taken ? quiz.taken : '0'} time${quiz.taken == 1 ? '' : 's'}</span>
         </div>
     </div>
 </article>`;
 
+
 export async function profilePage(ctx) {
     const user = await findUser();
-    ctx.render(profileTemplate(user));
+    const userQuizes = await getQuizByOwner(user.objectId);
+
+    ctx.render(profileTemplate(user, userQuizes));
 }

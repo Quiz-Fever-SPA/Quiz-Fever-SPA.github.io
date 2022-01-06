@@ -1,5 +1,5 @@
 import * as api from './api.js';
-import { addOwner, } from './data.js';
+import { addOwner, createPointer, } from './data.js';
 import { getSolutionCount } from './solutions.js';
 
 
@@ -12,6 +12,12 @@ export async function getQuizes() {
 
 export async function getQuizById(id) {
     return api.get('/classes/Quiz/' + id + '?include=owner');
+}
+
+export async function getQuizByOwner(userId) {
+    const query = JSON.stringify({ owner: createPointer('_User', userId) });
+    const response = await api.get('/classes/Quiz?where=' + encodeURIComponent(query));
+    return response.results;
 }
 
 export async function getStats() {
