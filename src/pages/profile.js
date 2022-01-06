@@ -34,14 +34,12 @@ const profileTemplate = (user, quiz, onDelete) => html`
         </article>
     </div>
 
-    <header class="pad-large">
-        <h2>Quizes created by you:</h2>
-    </header>
-
     <div class="pad-large alt-page">
+        <h2>Quizes created by you:</h2>
+        
         ${quiz.length == 0 
             ? html`<p>NO QUIZES</p>
-                    <a class="action cta" href="/create">Create Your first Quiz</a>`
+                    <a class="action cta" href="/create">Create Your First Quiz</a>`
             : until(quiz.map(q => quizTemplate(q, onDelete)), cube())}
     </div>
 </section>`;
