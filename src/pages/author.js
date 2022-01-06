@@ -39,7 +39,7 @@ export async function loginPage(ctx) {
 
         await login(username, password);
         e.target.reset();
-        ctx.page.redirect('/browse');
+        ctx.page.redirect('/');
     }
 }
 
@@ -93,6 +93,6 @@ export async function registerPage(ctx) {
 
         await register(username, email, password);
         e.target.reset();
-        ctx.page.redirect('/browse');
+        ctx.page.redirect('/');
     }
 }    
